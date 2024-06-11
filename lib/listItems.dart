@@ -6,23 +6,29 @@ class ListItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return SizedBox(
+      width: 100,
       child: Column(
         children: [
           Container(
-            height: 10,
+            height: 50,
+            width: 70,
             color: const Color.fromARGB(255, 130, 255, 132),
             child: const Center(child: Text('A')),
           ),
-          const Divider(),
+          const Divider(
+            thickness: 0.05,
+          ),
           Container(
-            height: 10,
+            height: 50,
+            width: 70,
             color: Colors.amber[300],
             child: const Center(child: Text('B')),
           ),
           const Divider(),
           Container(
-            height: 10,
+            height: 50,
+            width: 70,
             color: Colors.amber[400],
             child: const Center(child: Text('C')),
           ),

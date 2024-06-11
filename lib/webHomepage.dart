@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_3/listItems.dart';
 
 class Webhomepage extends StatefulWidget {
   const Webhomepage({super.key, required this.title});
@@ -11,6 +12,29 @@ class Webhomepage extends StatefulWidget {
 
 class _WebhomepageState extends State<Webhomepage> {
   var _currentIndex = 0;
+
+  late OverlayEntry _overlayEntry;
+
+  void _showPopup(Widget content, Offset offset) {
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+          top: offset.dy,
+          left: offset.dx,
+          child: Container(
+            child: content,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
+          )),
+    );
+    Overlay.of(context).insert(_overlayEntry);
+  }
+
+  void _hidePopup() {
+    _overlayEntry.remove();
+  }
+
   @override
   Widget build(BuildContext context) {
     var dropdownVal;
@@ -114,16 +138,30 @@ class _WebhomepageState extends State<Webhomepage> {
                         color: Color.fromARGB(255, 14, 0, 16),
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _currentIndex = 0;
-                        });
+                    MouseRegion(
+                      onEnter: (event) {
+                        _showPopup(
+                          const SizedBox(
+                            width: 200, // Set the width of the popup
+                            child: ListItems(),
+                          ),
+                          event.position,
+                        );
                       },
-                      icon: Icon(
-                        _currentIndex == 0 ? Icons.home : Icons.home_outlined,
+                      onExit: (event) {
+                        _hidePopup();
+                      },
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _currentIndex = 0;
+                          });
+                        },
+                        icon: Icon(
+                          _currentIndex == 0 ? Icons.home : Icons.home_outlined,
+                        ),
+                        color: Colors.white,
                       ),
-                      color: Colors.white,
                     ),
                     IconButton(
                       onPressed: () {
