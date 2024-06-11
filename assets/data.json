@@ -1,0 +1,44 @@
+{
+    "workspace":{
+        "name": "MI2"
+    },
+    "users":[
+        {
+            "name": "Aravind Chembeti"
+        },
+        {
+            "name": "Gowthami Pari"
+        },
+        {
+            "name": "Kalyani Gumuluri"
+        }
+    ],
+    "channels":[
+        {
+            "name": "general"
+        },
+        {
+            "name": "lol"
+        },
+        {
+            "name": "random"
+        },
+        {
+            "name": "Add channels"
+        }
+    ],
+    "dms":[
+        {
+            "user": "Aravind Chembeti",
+            "text": "Hello,team!"
+        },
+        {
+            "user": "Gowthami Pari",
+            "text": "Hello"
+        },
+        {
+            "user": "Shaik Shabana Nasreen",
+            "text": "Hello"
+        }
+    ]
+}
