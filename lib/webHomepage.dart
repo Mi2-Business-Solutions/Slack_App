@@ -21,11 +21,11 @@ class _WebhomepageState extends State<Webhomepage> {
           top: offset.dy,
           left: offset.dx,
           child: Container(
-            child: content,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
             ),
+            child: content,
           )),
     );
     Overlay.of(context).insert(_overlayEntry);
@@ -138,12 +138,23 @@ class _WebhomepageState extends State<Webhomepage> {
                         color: Color.fromARGB(255, 14, 0, 16),
                       ),
                     ),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _currentIndex = 0;
+                        });
+                      },
+                      icon: Icon(
+                        _currentIndex == 0 ? Icons.home : Icons.home_outlined,
+                      ),
+                      color: Colors.white,
+                    ),
                     MouseRegion(
                       onEnter: (event) {
                         _showPopup(
                           const SizedBox(
                             width: 200, // Set the width of the popup
-                            child: ListItems(),
+                            child: ListItems(menuItem: 'chat'),
                           ),
                           event.position,
                         );
@@ -154,49 +165,70 @@ class _WebhomepageState extends State<Webhomepage> {
                       child: IconButton(
                         onPressed: () {
                           setState(() {
-                            _currentIndex = 0;
+                            _currentIndex = 1;
                           });
                         },
                         icon: Icon(
-                          _currentIndex == 0 ? Icons.home : Icons.home_outlined,
+                          _currentIndex == 1
+                              ? Icons.chat_bubble_rounded
+                              : Icons.chat_bubble_outline_rounded,
                         ),
                         color: Colors.white,
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _currentIndex = 1;
-                        });
+                    MouseRegion(
+                      onEnter: (event) {
+                        _showPopup(
+                          const SizedBox(
+                            width: 200, // Set the width of the popup
+                            child: ListItems(
+                              menuItem: 'notify',
+                            ),
+                          ),
+                          event.position,
+                        );
                       },
-                      icon: Icon(
-                        _currentIndex == 1
-                            ? Icons.chat_bubble_rounded
-                            : Icons.chat_bubble_outline_rounded,
+                      onExit: (event) {
+                        _hidePopup();
+                      },
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _currentIndex = 2;
+                          });
+                        },
+                        icon: Icon(
+                          _currentIndex == 2
+                              ? Icons.notifications
+                              : Icons.notifications_outlined,
+                        ),
+                        color: Colors.white,
                       ),
-                      color: Colors.white,
                     ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _currentIndex = 2;
-                        });
+                    MouseRegion(
+                      onEnter: (event) {
+                        _showPopup(
+                          const SizedBox(
+                            width: 200, // Set the width of the popup
+                            child: ListItems(
+                              menuItem: 'more',
+                            ),
+                          ),
+                          event.position,
+                        );
                       },
-                      icon: Icon(
-                        _currentIndex == 2
-                            ? Icons.notifications
-                            : Icons.notifications_outlined,
+                      onExit: (event) {
+                        _hidePopup();
+                      },
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _currentIndex = 3;
+                          });
+                        },
+                        icon: const Icon(Icons.more_horiz),
+                        color: Colors.white,
                       ),
-                      color: Colors.white,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _currentIndex = 3;
-                        });
-                      },
-                      icon: const Icon(Icons.more_horiz),
-                      color: Colors.white,
                     ),
                     const Spacer(),
                     IconButton(

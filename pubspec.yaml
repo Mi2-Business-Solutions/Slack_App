@@ -66,6 +66,8 @@ flutter:
   assets:
     - assets/slack-logo.png
     - assets/data.json
+    - assets/mi2_logo.webp
+    - assets/whale.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

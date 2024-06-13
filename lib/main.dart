@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
           colorScheme: const ColorScheme.light(onPrimary: Colors.white),
           useMaterial3: true,
         ),
-        home: const Loginpage(logo: 'assets/slack-logo.png')
+        home: const Loginpage(logo: 'assets/mi2_logo.webp')
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
         );
   }

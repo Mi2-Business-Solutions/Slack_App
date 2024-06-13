@@ -28,17 +28,85 @@
         }
     ],
     "dms":[
+       {
+           "name": "Direct messages",
+           "items": [
+            {
+                "name": "Slack is better when everyone's here.",
+                "description": "Add your team and get the conversation started."
+            },
+            {
+                "name": "Aravind Chembeti",
+                "icon": "0xe491"
+            },
+            {
+                "name":"Kalyani Gumuluri",
+                "icon": "0xe491"
+            },
+            {
+                "name": "Shaik Shabana Nasreen(you)",
+                "icon": "0xe491"
+            },
+            {
+                "name":"Gowthami Pari",
+                "icon": "0xe491"
+            }
+           ]
+       }
+    ],
+    "activity": [
+    {
+        "name": "Activity",
+        "items": [
+            {
+                "name": "Aravind Chembeti",
+                "description": "Hello, team! @Gowthami Pari @Kalyani Gumuluri",
+                "icon": "0xe491"
+            }
+        ]
+    }
+],
+    "more":[
         {
-            "user": "Aravind Chembeti",
-            "text": "Hello,team!"
-        },
-        {
-            "user": "Gowthami Pari",
-            "text": "Hello"
-        },
-        {
-            "user": "Shaik Shabana Nasreen",
-            "text": "Hello"
+            "name": "More",
+            "items": [
+                {
+                    "name":  "Automations",
+                    "description": "Create and find worflows and apps",
+                    "icon": "0xf87b"
+                },
+                {
+                    "name":  "Huddles",
+                    "description": "Collaborate and gather in real time",
+                    "icon": "0xf0ed"
+                },
+                {
+                    "name":  "Canvases",
+                    "description": "Curate content and collaborate",
+                    "icon": "0xe269"
+                },
+                {
+                    "name":  "Files",
+                    "description": "Documents, clips and attachments",
+                    "icon": "0xf8b5"
+                },
+                {
+                    "name":  "Channels",
+                    "description": "Browse your team's conversations",
+                    "icon": "0xe18f"
+                },
+                {
+                    "name":  "People",
+                    "description": "Your team and user groups",
+                    "icon": "0xe18f"
+                },
+                {
+                    "name":  "External Connections",
+                    "description": "Work with people from other organizations",
+                    "icon": "0xe18f"
+                }
+            ]
         }
+
     ]
 }
