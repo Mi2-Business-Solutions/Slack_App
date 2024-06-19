@@ -1,6 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_3/listItems.dart';
+import 'package:flutter_application_3/sidebarItems/homeItem.dart';
+
+Future<dynamic> loadJsonData() async {
+  String jsonString = await rootBundle.loadString('assets/data.json');
+  var data = jsonDecode(jsonString);
+  return data;
+}
 
 class Webhomepage extends StatefulWidget {
   const Webhomepage({super.key, required this.title});
@@ -331,6 +341,7 @@ class _WebhomepageState extends State<Webhomepage> {
                         ),
                       ],
                     ),
+                    const Expanded(child: HomeItem()),
                   ])),
                 ),
               )

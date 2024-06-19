@@ -2,6 +2,52 @@
     "workspace":{
         "name": "MI2"
     },
+    "homeItem":[
+        {
+            "name": "Channels",
+            "items":[
+                {
+                    "name": " #  general"
+                },
+                {
+                    "name": " #  lol"
+                },
+                {
+                    "name": " #  random"
+                },
+                {
+                    "name": " Add channels",
+                    "icon": "0xe047"
+                }
+            ]
+        },
+        {
+            "name": "Direct messages",
+            "items": [
+                {
+                    "name": "Aravind Chembeti",
+                    "icon": "0xe491"
+                },
+                {
+                    "name":"Kalyani Gumuluri",
+                    "icon": "0xe491"
+                },
+                {
+                    "name":"Gowthami Pari",
+                    "icon": "0xe491"
+                },
+                {
+                    "name": "Shaik Shabana Nasreen(you)",
+                    "icon": "0xe491"
+                },
+                {
+                    "name": "Add colleagues",
+                    "icon": "0xe047"
+                }
+                
+            ]
+        }
+    ],
     "users":[
         {
             "name": "Aravind Chembeti"

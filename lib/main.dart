@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/loginPage.dart';
+import 'dart:html' as html;
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // html.document.title = 'My Desired Tab Name';
+    Future.delayed(Duration.zero, () {
+      html.document.title = 'MI2';
+    });
     return MaterialApp(
         title: 'Slack',
         theme: ThemeData(
