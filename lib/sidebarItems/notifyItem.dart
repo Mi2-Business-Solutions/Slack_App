@@ -11,14 +11,14 @@ Future<dynamic> loadJsonData() async {
   return data;
 }
 
-class HomeItem extends StatefulWidget {
-  const HomeItem({Key? key}) : super(key: key);
+class NotifyItem extends StatefulWidget {
+  const NotifyItem({Key? key}) : super(key: key);
   // final String menuItem;
   @override
-  _MyHomeItemState createState() => _MyHomeItemState();
+  _MyNotifyItemState createState() => _MyNotifyItemState();
 }
 
-class _MyHomeItemState extends State<HomeItem> {
+class _MyNotifyItemState extends State<NotifyItem> {
   late dynamic listing;
   late var jsonData;
   late Future<dynamic> _jsonData;
@@ -33,7 +33,7 @@ class _MyHomeItemState extends State<HomeItem> {
     return FutureBuilder(
       future: loadJsonData(),
       builder: (context, snapshot) {
-        List<Widget> HomeItem = [];
+        List<Widget> NotifyItem = [];
         List<dynamic> navBarItem = [];
         if (snapshot.hasData) {
           dynamic jsonData = snapshot.data;
@@ -55,56 +55,54 @@ class _MyHomeItemState extends State<HomeItem> {
           //     print('default');
           //     break;
           // }
-          navBarItem = jsonData['homeItem'];
+          navBarItem = jsonData['activity'];
           navBarItem.forEach((menu) {
             var dropdownVal;
-            HomeItem.add(Row(
-              children: [
-                DropdownButtonHideUnderline(
-                  child: DropdownButton(
-                    value: dropdownVal,
-                    icon: const Icon(
-                      // weight: 40,
-                      size: 30,
-                      Icons.arrow_drop_down_sharp,
-                      color: Colors.white,
-                    ),
-                    onChanged: (value) {},
-                    items: const [
-                      DropdownMenuItem(
-                        value: 1,
-                        child: Text('1'),
-                      ),
-                      DropdownMenuItem(
-                        value: 2,
-                        child: Text('2'),
-                      ),
-                      DropdownMenuItem(
-                        value: 3,
-                        child: Text('3'),
-                      ),
-                      DropdownMenuItem(
-                        value: 4,
-                        child: Text('4'),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 8.0),
-                  child: Text(
-                    menu['name'],
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                ),
-              ],
-            ));
+            // NotifyItem.add(Row(
+            //   children: [
+            //     DropdownButton(
+            //       value: dropdownVal,
+            //       icon: const Icon(
+            //         // weight: 40,
+            //         size: 30,
+            //         Icons.arrow_drop_down_sharp,
+            //         color: Colors.white,
+            //       ),
+            //       onChanged: (value) {},
+            //       items: const [
+            //         DropdownMenuItem(
+            //           value: 1,
+            //           child: Text('1'),
+            //         ),
+            //         DropdownMenuItem(
+            //           value: 2,
+            //           child: Text('2'),
+            //         ),
+            //         DropdownMenuItem(
+            //           value: 3,
+            //           child: Text('3'),
+            //         ),
+            //         DropdownMenuItem(
+            //           value: 4,
+            //           child: Text('4'),
+            //         ),
+            //       ],
+            //     ),
+            //     Padding(
+            //       padding: EdgeInsets.only(left: 8.0),
+            //       child: Text(
+            //         menu['name'],
+            //         style: TextStyle(
+            //             color: Colors.white,
+            //             fontWeight: FontWeight.bold,
+            //             fontSize: 15),
+            //       ),
+            //     ),
+            //   ],
+            // ));
             menu['items'].forEach((item) {
               item['icon'] != null
-                  ? HomeItem.add(Row(
+                  ? NotifyItem.add(Row(
                       children: [
                         Container(
                           height: 22,
@@ -129,7 +127,7 @@ class _MyHomeItemState extends State<HomeItem> {
                         )
                       ],
                     ))
-                  : HomeItem.add(Container(
+                  : NotifyItem.add(Container(
                       margin: const EdgeInsets.only(left: 10),
                       child: Text(
                         item['name'],
@@ -144,7 +142,7 @@ class _MyHomeItemState extends State<HomeItem> {
           return SizedBox(
             // width: 200,
             child: Column(
-              children: HomeItem,
+              children: NotifyItem,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               textDirection: TextDirection.ltr,

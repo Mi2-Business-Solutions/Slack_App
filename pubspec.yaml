@@ -37,6 +37,12 @@ dependencies:
   cupertino_icons: ^1.0.6
   popover: ^0.3.0+1
   html: ^0.15.0
+  font_awesome_flutter: ^10.7.0
+  device_preview: ^1.2.0
+  universal_platform: ^1.1.0
+  flutter_web_plugins:
+    sdk: flutter
+  accordion: ^2.6.0
 
 dev_dependencies:
   flutter_test:

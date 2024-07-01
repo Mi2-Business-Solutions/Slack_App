@@ -67,7 +67,7 @@ class _LoginpageState extends State<Loginpage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => isSmallScreen
-                            ? const MyHomePage(title: 'MI2')
+                            ? const MobileHomePage(title: 'MI2')
                             : const Webhomepage(title: 'MI2')),
                   );
                 },

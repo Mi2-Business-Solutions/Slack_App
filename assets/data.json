@@ -1,11 +1,11 @@
 {
-    "workspace":{
+    "workspace": {
         "name": "MI2"
     },
-    "homeItem":[
+    "homeItem": [
         {
             "name": "Channels",
-            "items":[
+            "items": [
                 {
                     "name": " #  general"
                 },
@@ -29,11 +29,11 @@
                     "icon": "0xe491"
                 },
                 {
-                    "name":"Kalyani Gumuluri",
+                    "name": "Kalyani Gumuluri",
                     "icon": "0xe491"
                 },
                 {
-                    "name":"Gowthami Pari",
+                    "name": "Gowthami Pari",
                     "icon": "0xe491"
                 },
                 {
@@ -44,11 +44,10 @@
                     "name": "Add colleagues",
                     "icon": "0xe047"
                 }
-                
             ]
         }
     ],
-    "users":[
+    "users": [
         {
             "name": "Aravind Chembeti"
         },
@@ -59,7 +58,7 @@
             "name": "Kalyani Gumuluri"
         }
     ],
-    "channels":[
+    "channels": [
         {
             "name": "general"
         },
@@ -73,86 +72,111 @@
             "name": "Add channels"
         }
     ],
-    "dms":[
-       {
-           "name": "Direct messages",
-           "items": [
-            {
-                "name": "Slack is better when everyone's here.",
-                "description": "Add your team and get the conversation started."
-            },
-            {
-                "name": "Aravind Chembeti",
-                "icon": "0xe491"
-            },
-            {
-                "name":"Kalyani Gumuluri",
-                "icon": "0xe491"
-            },
-            {
-                "name": "Shaik Shabana Nasreen(you)",
-                "icon": "0xe491"
-            },
-            {
-                "name":"Gowthami Pari",
-                "icon": "0xe491"
-            }
-           ]
-       }
+    "dms": [
+        {
+            "name": "Direct messages",
+            "items": [
+                {
+                    "name": "Aravind Chembeti",
+                    "icon": "0xe491"
+                },
+                {
+                    "name": "Kalyani Gumuluri",
+                    "icon": "0xe491"
+                },
+                {
+                    "name": "Shaik Shabana Nasreen(you)",
+                    "icon": "0xe491",
+                    "description": "This is your space. Draft messages, create your to-do lists or keep links and files handy."
+                },
+                {
+                    "name": "Gowthami Pari",
+                    "icon": "0xe491"
+                }
+            ]
+        }
+    ],
+    "dmsHistory": [
+        {
+            "name": "Direct messages",
+            "items": [
+                {
+                    "name": "Aravind Chembeti",
+                    "icon": "0xe491",
+                    "description": "You: Shaik Shabana Nasreen accepted your invitation to join Slack -- take a second to say hello."
+                },
+                {
+                    "name": "Kalyani Gumuluri",
+                    "icon": "0xe491"
+                },
+                {
+                    "name": "Shaik Shabana Nasreen(you)",
+                    "icon": "0xe491",
+                    "description": "This is your space. Draft messages, create your to-do lists or keep links and files handy."
+                },
+                {
+                    "name": "Gowthami Pari",
+                    "icon": "0xe491"
+                },
+                {
+                    "name": "Add new teammate",
+                    "description": "Invite colleagues or external connections"
+                }
+            ]
+        }
     ],
     "activity": [
-    {
-        "name": "Activity",
-        "items": [
-            {
-                "name": "Aravind Chembeti",
-                "description": "Hello, team! @Gowthami Pari @Kalyani Gumuluri",
-                "icon": "0xe491"
-            }
-        ]
-    }
-],
-    "more":[
+        {
+            "name": "Activity",
+            "items": [
+                {
+                    "name": "Aravind Chembeti",
+                    "description": "Hello, team! @Gowthami Pari @Kalyani Gumuluri",
+                    "icon": "0xe491"
+                }
+            ]
+        }
+    ],
+    "more": [
         {
             "name": "More",
             "items": [
                 {
-                    "name":  "Automations",
+                    "name": "Automations",
                     "description": "Create and find worflows and apps",
                     "icon": "0xf87b"
                 },
                 {
-                    "name":  "Huddles",
+                    "name": "Huddles",
                     "description": "Collaborate and gather in real time",
                     "icon": "0xf0ed"
                 },
                 {
-                    "name":  "Canvases",
+                    "name": "Canvases",
                     "description": "Curate content and collaborate",
                     "icon": "0xe269"
                 },
                 {
-                    "name":  "Files",
+                    "name": "Files",
                     "description": "Documents, clips and attachments",
                     "icon": "0xf8b5"
                 },
                 {
-                    "name":  "Channels",
+                    "name": "Channels",
                     "description": "Browse your team's conversations",
                     "icon": "0xe18f"
                 },
                 {
-                    "name":  "People",
+                    "name": "People",
                     "description": "Your team and user groups",
                     "icon": "0xe18f"
                 },
                 {
-                    "name":  "External Connections",
+                    "name": "External Connections",
                     "description": "Work with people from other organizations",
                     "icon": "0xe18f"
                 }
             ]
         }
-
     ]
 }

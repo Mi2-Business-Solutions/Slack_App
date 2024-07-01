@@ -1,9 +1,14 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/loginPage.dart';
-import 'dart:html' as html;
+import 'package:flutter_application_3/mobilePageItems/dMsPage.dart';
+import 'package:flutter_application_3/mobilePageItems/homePage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(enabled: !kReleaseMode, builder: (context) => const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,10 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // html.document.title = 'My Desired Tab Name';
-    Future.delayed(Duration.zero, () {
-      html.document.title = 'MI2';
-    });
     return MaterialApp(
         title: 'Slack',
         theme: ThemeData(
@@ -27,16 +28,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MobileHomePage extends StatefulWidget {
+  const MobileHomePage({super.key, required this.title});
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MobileHomePage> createState() => _MobileHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MobileHomePageState extends State<MobileHomePage> {
   var _currentIndex = 0;
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +72,12 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: _navBarItems,
         currentIndex: _currentIndex,
-        onTap: (int index) => setState(() => _currentIndex = index),
+        onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+            _pageController.jumpToPage(index);
+          });
+        },
       ),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 53, 3, 63),
@@ -141,9 +148,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             Icons.mic,
                             color: Colors.white70,
                           ),
-                          // border: OutlineInputBorder(
-                          //   borderRadius: BorderRadius.circular(10.0),
-                          // ),
                         ),
                       ),
                     ),
@@ -166,8 +170,41 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
+          Expanded(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+              children: [
+                MobileViewHomeWidget(),
+                DmsPageWidget(),
+                ActivityPage(),
+              ],
+            ),
+          ),
         ],
       ),
+    );
+  }
+}
+
+// class DmsPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text('DMs Page'),
+//     );
+//   }
+// }
+
+class ActivityPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Activity Page'),
     );
   }
 }
