@@ -13,144 +13,93 @@ Future<dynamic> loadJsonData() async {
 
 class NotifyItem extends StatefulWidget {
   const NotifyItem({Key? key}) : super(key: key);
-  // final String menuItem;
+
   @override
-  _MyNotifyItemState createState() => _MyNotifyItemState();
+  _NotifyItemState createState() => _NotifyItemState();
 }
 
-class _MyNotifyItemState extends State<NotifyItem> {
-  late dynamic listing;
-  late var jsonData;
-  late Future<dynamic> _jsonData;
+class _NotifyItemState extends State<NotifyItem> {
+  late List<dynamic> activities = [];
 
   @override
   void initState() {
     super.initState();
+    loadActivities();
+  }
+
+  Future<void> loadActivities() async {
+    var jsonData = await loadJsonData();
+    setState(() {
+      activities = jsonData['activity'][0]['items'];
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: loadJsonData(),
-      builder: (context, snapshot) {
-        List<Widget> NotifyItem = [];
-        List<dynamic> navBarItem = [];
-        if (snapshot.hasData) {
-          dynamic jsonData = snapshot.data;
-          print(jsonData);
-          // switch (widget.menuItem) {
-          //   case 'chat':
-          //     print('chat');
-          //     navBarItem = jsonData['dms'];
-          //     break;
-          //   case 'notify':
-          //     print('notify');
-          //     navBarItem = jsonData['activity'];
-          //     break;
-          //   case 'more':
-          //     print(jsonData['workspace']['name']);
-          //     navBarItem = jsonData['more'];
-          //     break;
-          //   default:
-          //     print('default');
-          //     break;
-          // }
-          navBarItem = jsonData['activity'];
-          navBarItem.forEach((menu) {
-            var dropdownVal;
-            // NotifyItem.add(Row(
-            //   children: [
-            //     DropdownButton(
-            //       value: dropdownVal,
-            //       icon: const Icon(
-            //         // weight: 40,
-            //         size: 30,
-            //         Icons.arrow_drop_down_sharp,
-            //         color: Colors.white,
-            //       ),
-            //       onChanged: (value) {},
-            //       items: const [
-            //         DropdownMenuItem(
-            //           value: 1,
-            //           child: Text('1'),
-            //         ),
-            //         DropdownMenuItem(
-            //           value: 2,
-            //           child: Text('2'),
-            //         ),
-            //         DropdownMenuItem(
-            //           value: 3,
-            //           child: Text('3'),
-            //         ),
-            //         DropdownMenuItem(
-            //           value: 4,
-            //           child: Text('4'),
-            //         ),
-            //       ],
-            //     ),
-            //     Padding(
-            //       padding: EdgeInsets.only(left: 8.0),
-            //       child: Text(
-            //         menu['name'],
-            //         style: TextStyle(
-            //             color: Colors.white,
-            //             fontWeight: FontWeight.bold,
-            //             fontSize: 15),
-            //       ),
-            //     ),
-            //   ],
-            // ));
-            menu['items'].forEach((item) {
-              item['icon'] != null
-                  ? NotifyItem.add(Row(
+    if (activities.isEmpty) {
+      return Center(child: CircularProgressIndicator());
+    }
+
+    return ListView.builder(
+      itemCount: activities.length,
+      itemBuilder: (context, index) {
+        var item = activities[index];
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: item['name'].contains('Add')
+                      ? const Color.fromARGB(255, 67, 3, 80)
+                      : const Color.fromARGB(255, 156, 250, 195),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Icon(
+                  IconData(int.parse(item['icon']),
+                      fontFamily: 'MaterialIcons'),
+                  color: Colors.white,
+                  size: 40,
+                ),
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item['name'],
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          height: 22,
-                          width: 23,
-                          margin: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                              color: item['name'].contains('Add')
-                                  ? const Color.fromARGB(255, 67, 3, 80)
-                                  : Color.fromARGB(255, 156, 250, 195),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Icon(
-                            color: Color.fromARGB(255, 249, 248, 250),
-                            IconData(int.parse(item['icon']),
-                                fontFamily: 'MaterialIcons'),
+                        Icon(
+                          Icons.waving_hand,
+                          size: 20,
+                          color: Colors.amber[400],
+                        ),
+                        SizedBox(width: 5),
+                        Expanded(
+                          child: Text(
+                            item['description'],
+                            style: TextStyle(color: Colors.white),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        Text(
-                          item['name'],
-                          textAlign: TextAlign.right,
-                          textDirection: TextDirection.ltr,
-                          style: TextStyle(color: Colors.white),
-                        )
                       ],
-                    ))
-                  : NotifyItem.add(Container(
-                      margin: const EdgeInsets.only(left: 10),
-                      child: Text(
-                        item['name'],
-                        textAlign: TextAlign.right,
-                        textDirection: TextDirection.ltr,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ));
-            });
-          });
-
-          return SizedBox(
-            // width: 200,
-            child: Column(
-              children: NotifyItem,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              textDirection: TextDirection.ltr,
-            ),
-          );
-        } else {
-          return const CircularProgressIndicator();
-        }
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
       },
     );
   }

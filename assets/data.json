@@ -96,42 +96,13 @@
             ]
         }
     ],
-    "dmsHistory": [
-        {
-            "name": "Direct messages",
-            "items": [
-                {
-                    "name": "Aravind Chembeti",
-                    "icon": "0xe491",
-                    "description": "You: Shaik Shabana Nasreen accepted your invitation to join Slack -- take a second to say hello."
-                },
-                {
-                    "name": "Kalyani Gumuluri",
-                    "icon": "0xe491"
-                },
-                {
-                    "name": "Shaik Shabana Nasreen(you)",
-                    "icon": "0xe491",
-                    "description": "This is your space. Draft messages, create your to-do lists or keep links and files handy."
-                },
-                {
-                    "name": "Gowthami Pari",
-                    "icon": "0xe491"
-                },
-                {
-                    "name": "Add new teammate",
-                    "description": "Invite colleagues or external connections"
-                }
-            ]
-        }
-    ],
     "activity": [
         {
             "name": "Activity",
             "items": [
                 {
                     "name": "Aravind Chembeti",
-                    "description": "Hello, team! @Gowthami Pari @Kalyani Gumuluri",
+                    "description": "Hello, team! @Gowthami Pari @Kalyani Gumuluri @Shaik Shabana Nasreen",
                     "icon": "0xe491"
                 }
             ]
@@ -178,5 +149,93 @@
                 }
             ]
         }
-    ]
+    ],
+    "dmsHistory": [
+        {
+            "name": "Direct messages",
+            "items": [
+                {
+                    "name": "Aravind Chembeti",
+                    "icon": "0xe491",
+                    "description": "You: Shaik Shabana Nasreen accepted your invitation to join Slack -- take a second to say hello."
+                },
+                {
+                    "name": "Kalyani Gumuluri",
+                    "icon": "0xe491"
+                },
+                {
+                    "name": "Shaik Shabana Nasreen(you)",
+                    "icon": "0xe491",
+                    "description": "This is your space. Draft messages, create your to-do lists or keep links and files handy."
+                },
+                {
+                    "name": "Gowthami Pari",
+                    "icon": "0xe491"
+                },
+                {
+                    "name": "Add new teammate",
+                    "description": "Invite colleagues or external connections"
+                }
+            ]
+        }
+    ],
+    "activityOptions": [
+        {
+            "name": "All"
+        },
+        {
+            "name": "Mentions",
+            "icon": "at"
+        },
+        {
+            "name": "Threads",
+            "icon": "signalMessenger"
+        },
+        {
+            "name": "Reactions",
+            "icon": "faceSmile"
+        },
+        {
+            "name": "Apps",
+            "icon": "appStore"
+        },
+        {
+            "name": "Invitations",
+            "icon": "paperPlane"
+        }
+    ],
+    "activityList": [
+    {
+      "name": "Aravind Chembeti",
+      "description": "Hello, team! @Gowthami Pari @Kalyani Gumuluri @Shaik Shabana Nasreen",
+      "icon": "0xe491",
+      "date": "4 Jun",
+      "group": "#lol",
+      "type": "Mentions"
+    },
+    {
+      "name": "Kalyani Gumuluri",
+      "description": "Check out this thread!",
+      "icon": "0xe491",
+      "date": "3 Jun",
+      "group": "#lol",
+      "type": "Threads"
+    },
+    {
+      "name": "Gowthami Pari",
+      "description": "Liked your message",
+      "icon": "0xe491",
+      "date": "2 Jun",
+      "group": "#lol",
+      "type": "Reactions"
+    },
+    {
+      "name": "Aravind Chembeti",
+      "description": "Installed new app for tracking",
+      "icon": "0xe491",
+      "date": "31 May",
+      "group": "#lol",
+      "type": "Apps"
+    }
+  ]
 }

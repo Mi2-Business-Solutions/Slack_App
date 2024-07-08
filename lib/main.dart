@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/loginPage.dart';
+import 'package:flutter_application_3/mobilePageItems/activityPage.dart';
 import 'package:flutter_application_3/mobilePageItems/dMsPage.dart';
 import 'package:flutter_application_3/mobilePageItems/homePage.dart';
 
@@ -22,9 +23,7 @@ class MyApp extends StatelessWidget {
           colorScheme: const ColorScheme.light(onPrimary: Colors.white),
           useMaterial3: true,
         ),
-        home: const Loginpage(logo: 'assets/mi2_logo.webp')
-        // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-        );
+        home: const Loginpage(logo: 'assets/mi2_logo.webp'));
   }
 }
 
@@ -37,18 +36,20 @@ class MobileHomePage extends StatefulWidget {
 }
 
 class _MobileHomePageState extends State<MobileHomePage> {
+  final List<String> navBarItemNames = ['Home', 'DMs', 'Activity'];
+  String _title = 'MI2';
   var _currentIndex = 0;
   final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
-    final List<BottomNavigationBarItem> _navBarItems = [
+    final List<BottomNavigationBarItem> navBarItems = [
       BottomNavigationBarItem(
         icon: Icon(
           _currentIndex == 0 ? Icons.home : Icons.home_outlined,
           color: _currentIndex == 0 ? Colors.black : null,
         ),
-        label: 'Home',
+        label: navBarItemNames[0],
       ),
       BottomNavigationBarItem(
         icon: Icon(
@@ -57,7 +58,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
               : Icons.chat_bubble_outline_rounded,
           color: _currentIndex == 1 ? Colors.black : null,
         ),
-        label: 'DMs',
+        label: navBarItemNames[1],
       ),
       BottomNavigationBarItem(
         icon: Icon(
@@ -65,36 +66,51 @@ class _MobileHomePageState extends State<MobileHomePage> {
                 ? Icons.notifications
                 : Icons.notifications_outlined,
             color: _currentIndex == 2 ? Colors.black : null),
-        label: 'Activity',
+        label: navBarItemNames[2],
       ),
     ];
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        items: _navBarItems,
+        items: navBarItems,
         currentIndex: _currentIndex,
         onTap: (int index) {
           setState(() {
             _currentIndex = index;
             _pageController.jumpToPage(index);
+            if (navBarItemNames[index] == 'Home') {
+              _title = 'MI2';
+            } else if (navBarItemNames[index] == 'DMs') {
+              _title = 'Direct Messages';
+            } else {
+              _title = navBarItemNames[index];
+            }
           });
         },
       ),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 53, 3, 63),
-        leading: FloatingActionButton(
-          mini: true,
-          backgroundColor: const Color.fromARGB(255, 242, 222, 246),
-          onPressed: () {},
-          child: const Icon(
-            IconData(
-              77,
-            ),
-            size: 25,
-            color: Color.fromARGB(255, 14, 0, 16),
-          ),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return FloatingActionButton(
+              mini: true,
+              backgroundColor: const Color.fromARGB(255, 242, 222, 246),
+              onPressed: () {
+                Scaffold.of(context)
+                    .openDrawer(); // Open drawer on menu icon click
+              },
+              child: const Icon(
+                IconData(
+                  77,
+                ),
+                size: 25,
+                color: Color.fromARGB(255, 14, 0, 16),
+              ),
+            );
+          },
         ),
         title: Text(
-          widget.title,
+          _title,
           style: const TextStyle(
               color: Color.fromARGB(255, 242, 222, 246),
               fontWeight: FontWeight.bold),
@@ -115,6 +131,119 @@ class _MobileHomePageState extends State<MobileHomePage> {
             onPressed: () {},
           ),
         ],
+      ),
+      drawer: Drawer(
+        width: MediaQuery.of(context).size.width - 50,
+        child: Column(
+          children: [
+            Container(
+              // padding: EdgeInsets.only(left: 10, right: 5),
+              margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: const Text(
+                      'Workspaces',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
+                  // DrawerHeader(
+                  //   padding: EdgeInsets.only(left: 10, right: 5),
+                  //   margin: EdgeInsets.zero,
+                  //   decoration: BoxDecoration(
+                  //       border:
+                  //           Border(bottom: BorderSide(color: Colors.transparent))),
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //       const Text(
+                  //         'Workspaces',
+                  //         style: TextStyle(
+                  //             color: Colors.black,
+                  //             fontSize: 24,
+                  //             fontWeight: FontWeight.bold),
+                  //       ),
+                  Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        padding: EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15.0),
+                          border: Border.all(color: Colors.black, width: 4),
+                        ),
+                        child: Container(
+                            width: 45,
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 203, 205, 205),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'M',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            )),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "MI2",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text('mi2bizsolutions.slack.com')
+                        ],
+                      ),
+                      Spacer(),
+                      Icon(Icons.more_vert)
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Spacer(),
+            const Divider(
+              thickness: 1,
+              color: Color.fromARGB(255, 203, 205, 205),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.add,
+                size: 30,
+              ),
+              title: const Text('Add a workspace'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings_outlined),
+              title: const Text('Preferences'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.help_outline),
+              title: const Text('Help'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: Column(
         children: [
@@ -181,30 +310,12 @@ class _MobileHomePageState extends State<MobileHomePage> {
               children: [
                 MobileViewHomeWidget(),
                 DmsPageWidget(),
-                ActivityPage(),
+                ActivityPageWidget(),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-// class DmsPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Text('DMs Page'),
-//     );
-//   }
-// }
-
-class ActivityPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Activity Page'),
     );
   }
 }

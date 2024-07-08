@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_3/mobilePageItems/newPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Function to load JSON data
@@ -63,9 +64,12 @@ class _DmsPageWidgetState extends State<DmsPageWidget> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'herotag',
         backgroundColor: Color.fromARGB(255, 53, 3, 63),
         onPressed: () {
           // Implement message creation logic here
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => NewPage()));
         },
         child: Icon(
           FontAwesomeIcons.penToSquare,
@@ -88,7 +92,7 @@ class _DmsPageWidgetState extends State<DmsPageWidget> {
 
               return GestureDetector(
                 onTap: () {
-                  // Implement navigation to the conversation history screen
+                  // navigate toconversation history
                 },
                 child: Container(
                   height: 120,
@@ -140,51 +144,6 @@ class _DmsPageWidgetState extends State<DmsPageWidget> {
     }
   }
 
-//   Widget _listOfDMs(List<dynamic> dms) {
-//     return Column(
-//       children: dms.expand<Widget>((dm) {
-//         return (dm['items'] as List<dynamic>).map<Widget>((item) {
-//           if (!item['name'].toString().contains('you')) {
-//             Color backgroundColor = (itemIndex % 2 == 0) ? color1 : color2;
-//             Color iconColor = (itemIndex % 2 == 0) ? color2 : color1;
-//             itemIndex++;
-
-//             return ListTile(
-//               leading: Container(
-//                 decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.circular(10),
-//                   color: backgroundColor,
-//                 ),
-//                 padding: EdgeInsets.all(8.0),
-//                 child: Icon(
-//                   getIconData(item['icon']),
-//                   size: 30,
-//                   color: iconColor,
-//                 ),
-//               ),
-//               title: Text(item['name']),
-//               subtitle: item['description'] != null
-//                   ? Text(item['description'])
-//                   : null,
-//               onTap: () {
-//                 // Implement navigation to the conversation history screen
-//               },
-//             );
-//           }
-//           return Container();
-//         }).toList();
-//       }).toList(),
-//       tiles.add(
-//       ListTile(
-//         leading: Icon(FontAwesomeIcons.userPlus),
-//         title: Text('Add new teammate'),
-//         subtitle: Text('Descriotion'),
-//       ),
-//       )
-//     );
-//   }
-// }
-
   Widget _listOfDMs(List<dynamic> dms) {
     List<Widget> tiles = dms.expand<Widget>((dm) {
       return (dm['items'] as List<dynamic>).map<Widget>((item) {
@@ -206,9 +165,21 @@ class _DmsPageWidgetState extends State<DmsPageWidget> {
                 color: iconColor,
               ),
             ),
-            title: Text(item['name']),
+            title: Text(
+              item['name'],
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             subtitle:
-                item['description'] != null ? Text(item['description']) : null,
+                // item['description'] != null ? Text(item['description']) : null,
+                item['name'].toString().contains('Aravind')
+                    ? Text(
+                        'You: Shaik Shabana Nasreen accepted your invitation to join Slack -- take a second to say hello.',
+                        softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                      )
+                    : null,
             onTap: () {
               // Implement navigation to the conversation history screen
             },
@@ -232,7 +203,12 @@ class _DmsPageWidgetState extends State<DmsPageWidget> {
             color: Colors.black,
           ),
         ),
-        title: Text('Add new teammate'),
+        title: Text(
+          'Add new teammate',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         subtitle: Text('Invite colleagues or external connections'),
         onTap: () {
           // Implement the add new teammate functionality

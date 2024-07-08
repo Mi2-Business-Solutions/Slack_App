@@ -43,6 +43,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   accordion: ^2.6.0
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +76,12 @@ flutter:
     - assets/data.json
     - assets/mi2_logo.webp
     - assets/whale.png
+    - assets/at_the_rate.jpeg
+    - assets/animal_img.png
+    - assets/congrats_img.png
+    - assets/hands_img.png
+    - assets/horse_img.png
+    - assets/sunny_img.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

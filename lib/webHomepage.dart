@@ -8,7 +8,7 @@ import 'package:flutter_application_3/sidebarItems/chatItem.dart';
 import 'package:flutter_application_3/sidebarItems/homeItem.dart';
 import 'package:flutter_application_3/sidebarItems/notifyItem.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'web_title_stub.dart' if (dart.library.html) 'web_title_helper_web.dart';
+// import 'web_title_stub.dart' if (dart.library.html) 'web_title_helper_web.dart';
 
 Future<dynamic> loadJsonData() async {
   String jsonString = await rootBundle.loadString('assets/data.json');
@@ -39,7 +39,7 @@ class _WebhomepageState extends State<Webhomepage> {
     _overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
           top: offset.dy,
-          left: screenWidth > 900 ? offset.dx : offset.dx - 350.0,
+          left: screenWidth >= 900 ? offset.dx : offset.dx - 350.0,
           child: Container(
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -57,9 +57,9 @@ class _WebhomepageState extends State<Webhomepage> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration.zero, () {
-      setDocumentTitle('MI2');
-    });
+    // Future.delayed(Duration.zero, () {
+    //   setDocumentTitle('MI2');
+    // });
 
     final screenWidth = MediaQuery.of(context).size.width;
     var dropdownVal;
@@ -175,9 +175,8 @@ class _WebhomepageState extends State<Webhomepage> {
                               onPressed: () {
                                 setState(() {
                                   _currentIndex = 0;
-                                  _showHomeItem = true; // Show HomeItem widget
-                                  _showChatContent =
-                                      false; // Hide other content
+                                  _showHomeItem = true;
+                                  _showChatContent = false;
                                   _showNotifications = false;
                                   _showMoreContent = false;
                                 });
@@ -204,7 +203,7 @@ class _WebhomepageState extends State<Webhomepage> {
                       onEnter: (event) {
                         _showPopup(
                           const SizedBox(
-                            width: 200, // Set the width of the popup
+                            width: 200,
                             child: ListItems(menuItem: 'chat'),
                           ),
                           event.position,
@@ -221,9 +220,8 @@ class _WebhomepageState extends State<Webhomepage> {
                             onPressed: () {
                               setState(() {
                                 _currentIndex = 1;
-                                _showHomeItem = false; // Hide other content
-                                _showChatContent =
-                                    true; // Show ChatContent widget
+                                _showHomeItem = false;
+                                _showChatContent = true;
                                 _showNotifications = false;
                                 _showMoreContent = false;
                               });
@@ -249,7 +247,7 @@ class _WebhomepageState extends State<Webhomepage> {
                       onEnter: (event) {
                         _showPopup(
                           const SizedBox(
-                            width: 200, // Set the width of the popup
+                            width: 200,
                             child: ListItems(
                               menuItem: 'notify',
                             ),
@@ -268,10 +266,9 @@ class _WebhomepageState extends State<Webhomepage> {
                             onPressed: () {
                               setState(() {
                                 _currentIndex = 2;
-                                _showHomeItem = false; // Hide other content
+                                _showHomeItem = false;
                                 _showChatContent = false;
-                                _showNotifications =
-                                    true; // Show NotificationsContent widget
+                                _showNotifications = true;
                                 _showMoreContent = false;
                               });
                             },
@@ -418,7 +415,6 @@ class _WebhomepageState extends State<Webhomepage> {
                         ),
                       ],
                     ),
-                    // const Expanded(child: HomeItem()),
                     Expanded(
                       child: _buildMainContent(),
                     )
@@ -440,29 +436,17 @@ class _WebhomepageState extends State<Webhomepage> {
     switch (_currentIndex) {
       case 1:
         return const Text(
-          'Direct Messages',
+          'DMs',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
-          overflow: TextOverflow.ellipsis, // Handle overflow
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+          overflow: TextOverflow.ellipsis,
         );
-      // return const Text(
-      //   // textAlign: TextAlign.right,
-      //   'Direct Messages',
-      //   style: TextStyle(
-      //       color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
-      // );
       case 2:
         return const Text(
           'Activity',
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         );
-      // case 3:
-      //   return const Text(
-      //     'More',
-      //     style: TextStyle(
-      //         color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
-      //   );
       default:
         return PopupMenuButton(
           position: PopupMenuPosition.under,
@@ -481,7 +465,6 @@ class _WebhomepageState extends State<Webhomepage> {
             ),
           ],
           child: const Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'MI2',
@@ -503,11 +486,11 @@ class _WebhomepageState extends State<Webhomepage> {
 
   Widget _buildMainContent() {
     switch (_currentIndex) {
-      case 0: // Home
+      case 0:
         return const HomeItem();
-      case 1: // DMs
+      case 1:
         return const ChatItem();
-      case 2: // Notifications
+      case 2:
         return const NotifyItem();
       default:
         return const HomeItem();
